@@ -35,7 +35,7 @@ public class SwerveDriveDefaultCommand extends CommandBase {
     private boolean safeMode          = false;
     private boolean fieldOrientedMode = false;
 
-    private double buttonDelay = 0.0;
+    private double buttonDelay = 0.0; //increase this value in seconds to add a button delay for switching drive modes
 
     private double forward;
     private double strafe;
@@ -48,7 +48,6 @@ public class SwerveDriveDefaultCommand extends CommandBase {
     private final int fieldOriented = 1;
     private final int robotOriented = 2;
  
-
     public SwerveDriveDefaultCommand(final SwerveDrive drive,
                                      final double DEADBAND,
                                      final double SPEED_NORMAL,
@@ -85,7 +84,7 @@ public class SwerveDriveDefaultCommand extends CommandBase {
         yawCorrection = drive.correctHeading(0.004, forward, strafe, rotate);
         
 
-        //puts robot into safemode where the robot will go slower
+        //puts robot into safemode where the robot will go slower - uses button toggle
          if(button(DriveMode.SAFEMMODE)) {
 
             if(comboStartTimeSafe == 0)
